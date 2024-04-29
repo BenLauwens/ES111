@@ -4,6 +4,9 @@
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ 7635c66f-05a3-4f99-9bc4-0a0eb79bf8f3
+include("css.jl")
+
 # ╔═╡ 7b025df6-013c-11ef-3e87-2f02f9ef5be1
 md"# Preliminaries"
 
@@ -283,9 +286,7 @@ Two sets ``A`` and ``B`` are called *equivalent* and we write ``A\sim B`` if the
 !!! theorem
 	If ``A\sim B`` and ``B\sim C``, then ``A\sim C``.
 
-!!! axiom
-
-	(of Peano).
+!!! axiom "Axiom of Peano"
 
 	Following axioms define the natural numbers.
 
@@ -358,9 +359,7 @@ or, when ``\mathcal{P}(x)`` denotes " ``x`` is an engineer",
 
 The above is true for any proposition ``\mathcal{P}(x)``.
 
-!!! theorem
-
-	(of DeMorgan).
+!!! theorem "Theorem of DeMorgan"
 
 	``\lnot (\forall x\in A:\mathcal{P}(x))\equiv \exists x\in A:\lnot \mathcal{P}(x)``.
 
@@ -371,9 +370,7 @@ In other words, the following two statements are equivalent:
 
 There is an analogous theorem for the negation of a proposition which contains the existential quantifier.
 
-!!! theorem
-
-	(of DeMorgan).
+!!! theorem "Theorem of DeMorgan"
 
 	``\lnot (\exists x\in A:\mathcal{P}(x))\equiv \forall x\in A:\lnot \mathcal{P}(x)``.
 
@@ -382,11 +379,11 @@ That is, the following two statements are equivalent:
 * It is not true that, for some ``a\in A``, ``\mathcal{P}(a)`` is true. 
 * For all ``a\in A``, ``\mathcal{P}(a)`` is false. 
 
-Previously, ``\lnot`` was used as an operation on propositions, here ``\lnot`` is used as an operation on propositional functions. The operations ``\vee`` and ``\wedge`` can also be applied to propositional functions. In terms of truth sets:
+Previously, ``\lnot`` was used as an operation on propositions, here ``\lnot`` is used as an operation on propositional functions. The operations ``\vee`` and ``\wedge`` can also be applied to propositional functions.
 
-1.  ``\lnot \mathcal{P}(x)`` is the complement of ``T_{\mathcal{P}}``, that is ``T_{\mathcal{P}}^c``.
-2. ``\mathcal{P}(x)\vee \mathcal{Q}(x)`` is the union of ``T_{\mathcal{P}}`` and ``T_{\mathcal{Q}}``, that is ``T_{\mathcal{P}} \cup T_{\mathcal{Q}}``.
-3. ``\mathcal{P}(x)\wedge \mathcal{Q}(x)`` is the intersection of ``T_{\mathcal{P}}`` and ``T_{\mathcal{Q}}``, that is ``T_{\mathcal{P}} \cap T_{\mathcal{Q}}``.
+1.  The truth set of ``\lnot \mathcal{P}(x)`` is the complement of ``T_{\mathcal{P}}``, that is ``T_{\mathcal{P}}^c``.
+2. The truth set of ``\mathcal{P}(x)\vee \mathcal{Q}(x)`` is the union of ``T_{\mathcal{P}}`` and ``T_{\mathcal{Q}}``, that is ``T_{\mathcal{P}} \cup T_{\mathcal{Q}}``.
+3. The truth set of ``\mathcal{P}(x)\wedge \mathcal{Q}(x)`` is the intersection of ``T_{\mathcal{P}}`` and ``T_{\mathcal{Q}}``, that is ``T_{\mathcal{P}} \cap T_{\mathcal{Q}}``.
 
 A propositional function of 2 variables defined over a product set ``A=A_1 \times A_2`` is a function ``A_1 \times A_2 \to \lbrace T,F\rbrace :\mathcal{P}(x_1,x_2 )`` which has the property that ``\mathcal{P}(a_1,a_2 )`` is true or false for any pair ``(a_1,a_2 )`` in ``A``.
 
@@ -417,7 +414,7 @@ Quantified statements with more than one variable may be negated by successively
 	Some examples of the negation of quantified statement with more than one variable:
 
 	* ``\lnot (\forall x\in A,\exists y\in B,\exists z\in C:\mathcal{P}(x,y,z))\equiv \exists x\in A,\lnot (\exists y\in B,\exists z\in C:\mathcal{P}(x,y,z))\equiv`` ``\exists x\in A,\forall y\in B,\lnot (\exists z\in C:\mathcal{P}(x,y,z))\equiv \exists x\in A,\forall y\in B,\forall z\in C:\lnot \mathcal{P}(x)``. 
-	* Consider the proposition: "Every student has at least one course where the lecturer is an officer". Its negation is the statement: "There is a student such that in every course the lecturer is not an officer". 
+	* Consider the proposition: "Every student has at least one course where the lecturer is an officer". Its negation is the statement: "There is a student such that all his courses have a lecturer which is not an officer". 
 
 """
 
@@ -430,9 +427,7 @@ Many proofs can be written by following a simple *template* that suggests guidel
 
 To proof ``\mathcal{P}\Rightarrow \mathcal{Q}``, we can proceed by looking at the truth table. The table shows that if ``\mathcal{P}`` is false, the statement ``\mathcal{P}\Rightarrow \mathcal{Q}`` is automatically true. This means that if we are concerned with showing ``\mathcal{P}\Rightarrow \mathcal{Q}`` is true, we don’t have to worry about the situations where ``\mathcal{P}`` is false  because the statement ``\mathcal{P}\Rightarrow \mathcal{Q}`` will be automatically true in those cases. But we must be very careful about the situations where ``\mathcal{P}`` is true. We must show that the condition of ``\mathcal{P}`` being true forces ``\mathcal{Q}`` to be true also.
 
-!!! template
-
-	Direct proof:
+!!! template "Template of direct proof"
 
 	*SET THE CONTEXT*
 
@@ -464,9 +459,7 @@ To proof ``\mathcal{P}\Rightarrow \mathcal{Q}``, we can proceed by looking at th
 
 In proving a statement is true, we sometimes have to examine multiple cases before showing the statement is true in all possible scenarios.
 
-!!! template
-
-	Direct proof with multiple cases:
+!!! template "Template of direct proof with multiple cases"
 
 	*SET THE CONTEXT*
 
@@ -507,9 +500,7 @@ Sometimes a direct proof of ``\mathcal{P}\Rightarrow \mathcal{Q}`` is very hard.
 
 	Show ``\lnot \mathcal{Q}\Rightarrow \lnot \mathcal{P}\equiv \mathcal{P}\Rightarrow \mathcal{Q}`` using a truth table.
 
-!!! template
-
-	Proof by contraposition:
+!!! template "Template of proof by contraposition"
 
 	*SET THE CONTEXT*
 
@@ -521,21 +512,19 @@ Sometimes a direct proof of ``\mathcal{P}\Rightarrow \mathcal{Q}`` is very hard.
 
 !!! example
 
-	Proof by contraposition the proposition "Let ``x\in \mathbb{N}``. If ``x^2 +6x+5`` is even, then ``x`` is odd".
+	Proof by contraposition the proposition "Let ``x\in \mathbb{N}``. If ``x^2`` is even, then ``x`` is even".
 
-	A direct proof would be problematic. We will proof the logically equivalent proposition "If ``x`` is not odd, then ``x^2 +6x+5`` is not even".
+	A direct proof would be problematic. We will proof the logically equivalent proposition "If ``x`` is not even, then ``x^2`` is not even".
 
-	!!! proof
-
-		(by contraposition).
+	!!! proof "Proof by contraposition"
 	
 		Let ``x\in \mathbb{N}``. 
 	
-		Suppose ``x`` is not odd. 
+		Suppose ``x`` is not even. 
 	
-		Then ``x`` is even and ``x=2k`` for some ``k\in \mathbb{N}``. Thus ``x^2 +6x+5=(2k)^2 +6\cdot (2k)+5=2(2k^2 +6k+2)+1``. Since ``k`` is a natural number, ``2k^2 +6k+2`` is also a natural number. Consequently, ``x^2 +6x+5`` is odd. 
+		Then ``x`` is odd and ``x=2k+1`` for some ``k\in \mathbb{N}``. Thus ``x^2=(2k+1)^2=2(2k^2+2k)+1``. Since ``k`` is a natural number, ``2k^2+2k`` is also a natural number. Consequently, ``x^2`` is odd. 
 	
-		Therefore, ``x^2 +6x+5`` is not even.
+		Therefore, ``x^2`` is not even.
 
 ### Proof by Contradiction
 
@@ -545,9 +534,7 @@ A proof by *contradiction* is not limited to proving just conditional statements
 
 	Show ``\mathcal{P}\equiv \lnot \mathcal{P}\Rightarrow \mathcal{C}\wedge \lnot \mathcal{C}`` using a truth table.
 
-!!! template
-
-	Proof by contradiction:
+!!! template "Template of proof by contradiction"
 
 	*SET THE CONTEXT*
 
@@ -563,9 +550,7 @@ A slightly unsettling feature of this method is that we may not know at the begi
 
 	Proof by contradiction the proposition "If ``a,b\in \mathbb{N}``, then ``a^2 -4b\not= 2``".
 
-	!!! proof
-
-		(by contradiction).
+	!!! proof "Proof by contradiction"
 	
 		Let ``a,b\in \mathbb{N}``.
 	
@@ -579,9 +564,7 @@ A slightly unsettling feature of this method is that we may not know at the begi
 
 The previous two proof methods dealt exclusively with proving conditional statements, we now formalize the procedure in which contradiction is used to prove a conditional statement. Thus we need to prove that ``\mathcal{P}\Rightarrow\mathcal{Q}`` is true. Proof by contradiction begins with the assumption that ``\lnot (\mathcal{P}\Rightarrow Q)`` is true, that is, that ``\mathcal{P}\Rightarrow \mathcal{Q}`` is false. But we know that ``\mathcal{P}\Rightarrow \mathcal{Q}`` being false means that it is possible that ``\mathcal{P}`` can be true while ``\mathcal{Q}`` is false. Thus the first step in the proof is to assume ``\mathcal{P}`` and ``\lnot \mathcal{Q}``. 
 
-!!! template
-
-	Proof by contradiction of ``\mathcal P\Rightarrow \mathcal Q``:
+!!! template "Template of proof by contradiction of a conditional proposition"
 
 	*SET THE CONTEXT*
 
@@ -595,9 +578,7 @@ The previous two proof methods dealt exclusively with proving conditional statem
 
 	Proof by contradiction the proposition "Let ``a\in \mathbb{N}``. If ``a^2`` is even, then ``a`` is even".
 
-	!!! proof
-
-		(by contradiction).
+	!!! proof "Proof by contradiction"
 	
 		Let ``a\in \mathbb{N}``.
 	
@@ -669,9 +650,7 @@ How to disprove a universally quantified statement such as ``\forall x:\mathcal{
 
 Suppose the variable ``n`` represents any natural number, and there is a propositional function ``\mathcal{P}(n)`` that includes this variable as an argument. *Mathematical induction* is a proof technique that uses the axiom of induction to show that ``\mathcal{P}(n)`` is true for all ``n`` greater than or equal to some base value ``b\in \mathbb{N}``.
 
-!!! template
-
-	Proof by induction:
+!!! template "Template of proof by induction"
 
 	*SET THE CONTEXT:* The statement will be proved by mathematical induction on ``n`` for all ``n\ge b``.
 
@@ -687,9 +666,7 @@ Suppose the variable ``n`` represents any natural number, and there is a proposi
 
 	Proof by induction the proposition "If ``n\in \mathbb{N}\setminus \lbrace 0\rbrace``, then ``1+3+5+7+\cdots +(2n-1)=n^2`` ". 
 
-	!!! proof
-
-		(by induction).
+	!!! proof "Proof by induction"
 		
 		Let ``n\in \mathbb{N}\setminus \lbrace 0\rbrace``.
 		
@@ -703,7 +680,8 @@ Suppose the variable ``n`` represents any natural number, and there is a proposi
 """
 
 # ╔═╡ Cell order:
+# ╟─7635c66f-05a3-4f99-9bc4-0a0eb79bf8f3
 # ╟─7b025df6-013c-11ef-3e87-2f02f9ef5be1
 # ╟─ad39fe0b-dcc3-4a12-8128-81b5463a6b33
 # ╟─bdcc61dc-65ca-4570-95f1-2934b03270f6
-# ╠═70adf7fa-d8da-4387-9362-734cd35a99b8
+# ╟─70adf7fa-d8da-4387-9362-734cd35a99b8

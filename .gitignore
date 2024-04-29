@@ -6,3 +6,5 @@
 *.tex
 *.toc
 *.pygstyle
+/svg-inkscape
+*.svg
